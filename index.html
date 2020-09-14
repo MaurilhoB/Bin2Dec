@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bin2Dec - Converter</title>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #1E88E5;
+        }
+        h3{
+            color: #ffffff;
+        }
+        .tool-container{
+            border-radius: 5px;
+            border: 1px solid #ffffff;
+            max-width: 500px;
+            text-align: center;
+            margin: 50px auto;
+            padding: 50px 0;
+        }
+        .tool-container > input{
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            border: 1px solid #ffffff;
+            margin: 5px auto;
+            display: block;
+            background: none;
+            outline: none;
+            padding: 10px 12px;
+            border-radius: 5px;
+            color: #ffffff;
+        }
+        .tool-container > #readonly{
+            background-color: rgba(0, 0, 0, 0.61);
+        }
+        .tool-container > #btn{
+            
+            margin-bottom: 5px;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, sans-serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            border: 1px solid #ffffff;
+            margin: auto;
+            display: block;
+            background: none;
+            outline: none;
+            padding: 10px 12px;
+            border-radius: 5px;
+            color: #ffffff;
+        }
+        .tool-container > #btn:hover{
+            background-color: #90CAF9;
+        }
+        @media screen and (max-width: 600px){
+            body{
+                height: 100vh;
+            }
+            .tool-container{
+                display: block;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin: 0;
+                width: 100%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    </style>
+
+    <main id="flex">
+        <div class="tool-container">
+            <h3>Input Your Binary Here:</h3>
+            <input id="u-input" maxlength="8" type="text" />
+            <input id="readonly" type="text" readonly/>
+            <button id="btn" onclick="convertToBin()">CONVERT</button>
+        </div>
+    </main>
+
+    <script>
+        function convertToBin(){
+            const inputNumber = document.getElementById('u-input');
+            const resultField = document.getElementById('readonly');
+            const result = Number('0b'+inputNumber.value);
+
+            if (isNaN(result)) {
+                resultField.value = "Insert a Valid Binary";
+            }else{
+                resultField.value = result;
+                inputNumber.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
